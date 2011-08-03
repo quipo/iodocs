@@ -42,5 +42,14 @@
              "version": "1.0",
              "crypt": "HMAC-SHA1"
         }
+    },
+    "datasift": {
+        "name": "DataSift Core API",
+        "protocol":"http",
+        "baseURL": "api.datasift.net",
+        "publicPath": "/",
+        "auth":"key",
+        "keyParam":"api_key",
+        "usernameParam":"username"
     }
 }

@@ -29,6 +29,9 @@ form#credentials
              - else
                  - var defaultSecret =''
              div
+                 - if (apiInfo.usernameParam)
+                     label(for='username') Username
+                     input(id='username', name='username', value='', style='color=#EEEEEE')
                  label(for='key') API Key
                  input(id='key', name='key', value=defaultKey, style='color=#EEEEEE')
              div

@@ -191,6 +191,9 @@ function oauth(req, res, next) {
 // OAuth Success!
 //
 function oauthSuccess(req, res, next) {
+    if (config.debug) {  
+        console.log("- oauthSuccess() called");
+    }
     var oauthRequestToken,
         oauthRequestTokenSecret,
         apiKey,
@@ -266,6 +269,7 @@ function oauthSuccess(req, res, next) {
 //
 function processRequest(req, res, next) {
     if (config.debug) {
+        console.log("- processRequest() called");
         console.log(util.inspect(req.body, null, 3));
     };
 
@@ -277,6 +281,7 @@ function processRequest(req, res, next) {
         apiSecret = reqQuery.apiSecret,
         apiName = reqQuery.apiName
         apiConfig = apisConfig[apiName],
+        username = reqQuery.username,
         key = req.sessionID + ':' + apiName;
 
     // Replace placeholders in the methodURL with matching params
@@ -454,8 +459,11 @@ function processRequest(req, res, next) {
         console.log('Unsecured Call');
 
         // Add API Key to params, if any.
-        if (apiKey != '') {
+        if (apiKey != '' && apiKey != undefined) {
             options.path += '&' + apiConfig.keyParam + '=' + apiKey;
+        }
+        if (username != '' && username != undefined) {
+            options.path += '&' + apiConfig.usernameParam + '=' + username;
         }
 
         // Perform signature routine, if any.
@@ -498,6 +506,7 @@ function processRequest(req, res, next) {
         }
 
         if (config.debug) {
+            console.log("Inspecting options:");
             console.log(util.inspect(options));
         };
 

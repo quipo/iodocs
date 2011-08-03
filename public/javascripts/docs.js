@@ -173,9 +173,10 @@
         var params = $(this).serializeArray(),
             apiKey = { name: 'apiKey', value: $('input[name=key]').val() },
             apiSecret = { name: 'apiSecret', value: $('input[name=secret]').val() },
-            apiName = { name: 'apiName', value: $('input[name=apiName]').val() };
+            apiName = { name: 'apiName', value: $('input[name=apiName]').val() },
+            username = { name: 'username', value: $('input[name=username]').val() };
 
-        params.push(apiKey, apiSecret, apiName);
+        params.push(apiKey, apiSecret, apiName, username);
 
         // Setup results container
         var resultContainer = $('.result', self);
