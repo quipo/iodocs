@@ -1,0 +1,205 @@
+/*
+* Tweetmeme CSS v1.1
+* Daniel Saxil-Nielsen & Mike Currie
+* DataSift
+* http://datasift.net
+*/
+
+/* _ _    ___    _____ ____
+   _| \ /\ | /\ (_  | |_ |
+   _|_//--\|/--\__)_|_|  |
+*/
+
+/* Typography
+------------------ */
+
+    html { background: #EFEFEF; }
+    body { background: #EFEFEF; font-family: Sans-Serif;
+           font-size: 12px; font-style: normal; font-weight: normal; text-transform: none; letter-spacing: normal;
+           line-height: 1.5em; color: #434343; padding:0; }
+
+    a { color: #467b96; text-decoration: none; }
+    a:hover { color: #ff8a00; }
+    a:active, a:focus { color: #3aa3d9; }
+
+    h1 { color: #2c2b33; font-size: 20px; }
+    h2 { color: #2c2b33; font-size: 18px; font-weight: normal; margin: 0px 0px 10px 0px; padding: 0px; }
+    h3 { color: #2c2b33; font-size: 16px; font-weight: normal; margin-bottom: 10px; }
+    h4 { color: #2c2b33; font-size: 14px; font-weight: normal; }
+    h1.large { font-size: 24px; }
+    h2.large { font-size: 20px; }
+
+    h3 + p { margin-top: 0px; }
+
+    h1:first-child,
+    h2:first-child,
+    h3:first-child,
+    h4:first-child { margin-top: 0px; }
+
+    p:first-child { margin-top: 0px; }
+    p:last-child { margin-bottom: 0px; }
+    p.large { font-size: 16px; color: #777; }
+
+    span.large { font-size: 18px; }
+
+/* Colours
+    #ff8a00 - Orange
+    #75894B - Green
+    #2c2b33 - Dark Purple
+------------------ */
+
+
+/* Overrides
+------------------ */
+
+    article,
+    aside,
+    canvas,
+    details,
+    figcaption,
+    figure,
+    footer,
+    header,
+    hgroup,
+    menu,
+    nav,
+    section,
+    summary { display: block; }
+
+    div { margin: 0; padding: 0; }
+    a img { border: 0; display: block; }
+    ul { padding-left: 0px; margin: 0 0 0px 0; }
+    li { margin: 5px 0; }
+
+
+/* Layout
+------------------ */
+
+    #wrapper { margin: 30px auto; width: 982px; position: static; }
+
+    #header #bar { background: #2c2b33; border: 1px solid #0b0b0d; border-bottom: 0px; color: #FFF; display: block;
+                   height: 50px; -webkit-border-top-left-radius: 3px;
+                   -webkit-border-top-right-radius: 3px; -moz-border-radius-topleft: 3px;
+                   -moz-border-radius-topright: 3px; border-top-left-radius: 3px; border-top-right-radius: 3px; }
+    #header #logo { margin: 0; float: left;}
+    #header #logo a { background: url('http://datasift.net/images/logo.png') no-repeat; margin: 11px; width: 91px; height: 26px;
+                     display: block; text-indent: -999px; }
+
+    #header .search { border: 1px solid #969599; float: right; margin: 11px; -moz-border-radius: 3px; -webkit-border-radius: 3px;}
+
+    #header .search #submit { background: url('/images/icon-search.gif') no-repeat 2px 4px; border: 0; height: 24px; width: 23px;
+                             overflow: hidden; cursor: pointer; text-indent: -999px; text-transform: capitalize; }
+
+    #header .search #search { background: #2c2b33; border: 0; color: #FFFFFF; margin: 0; padding: 4px; }
+
+    #header .auth { float: right; margin: 11px 0px 11px 0px; position: relative; z-index: 99; }
+    #header .auth .or { color: #999; }
+    #header .auth .loggedout { margin: 5px 0px 0px 0px; font-size: 14px; text-shadow: #161519 -1px -1px 0px; }
+    #header .auth a { color: #FFF; }
+    #header .auth a:hover { color: #FF8A00; }
+    #header .authSettings { background: #161519; overflow: hidden; -moz-border-radius: 2px; -webkit-border-radius: 2px;
+                            border-radius: 2px; }
+    #header .authSettings .avatar { display: block; float: left; height: 27px; width: 27px; background-size: 27px 27px;
+                                    -moz-background-size: 27px 27px; -webkit-background-size: 27px 27px;
+                                    -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px;  }
+    #header .authSettings span { background: url('/images/icons/arrows.gif') no-repeat right 6px; display: block;
+                                 padding: 5px 25px 5px 10px; float: left; }
+    #header .authSettings:hover span { background-position: right -11px; cursor: pointer; }
+    #header .authSettings ul { position: absolute; right: 0px; background: #161519; list-style: none; margin: 0px;
+                               padding: 0px; width: 100%; top: 27px; cursor: pointer; min-width: 100px; z-index: 99;
+                               white-space: nowrap;
+                               -webkit-border-bottom-left-radius: 3px;
+                               -webkit-border-bottom-right-radius: 3px; -moz-border-radius-bottomleft: 3px;
+                               -moz-border-radius-bottomright: 3px; border-bottom-left-radius: 3px;
+                               border-bottom-right-radius: 3px; }
+
+    #header .authSettings ul li a { display: block; padding: 5px 10px; color: #FFFFFF; }
+    #header .authSettings ul li a:hover { color: #ff8a00; }
+
+    #section { background: #FFFFFF; border: 1px solid #DCDCDC; border-top: 0px; padding: 20px; -webkit-border-bottom-left-radius: 3px;
+                   -webkit-border-bottom-right-radius: 3px; -moz-border-radius-bottomleft: 3px;
+                   -moz-border-radius-bottomright: 3px; border-bottom-left-radius: 3px; border-bottom-right-radius: 3px; }
+
+    /* Generic Visual Style */
+    .line { border-bottom: 1px dotted #ccc; clear: both; margin: 20px 0; height: 1px; line-height: 0; }
+    .end { margin: 0; }
+
+
+    /* Footer */
+    #footer { display: block; clear: both; margin: 10px 0; }
+    #footer p { margin: 10px; color: #666; }
+    #footer .links a { float: left; margin-left: 10px; }
+
+
+/* Forms
+------------------ */
+
+    /* submit buttons */
+
+    .btn { background-image: -moz-linear-gradient(center top , #FBFBFB, #F4F4F4);
+            background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FBFBFB), to(#F4F4F4));
+            background-color: #F4F4F4; border-color:#F0F0F0 #E2E2E2 #E4E4E4 #F0F0F0; border-style:solid;
+            border-width: 1px; color: #444444; font-weight: normal; padding: 6px 12px; }
+
+    .btn:hover {
+        background-image: -moz-linear-gradient(center top , #F4F4F4, #FBFBFB);
+        background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#F4F4F4), to(#FBFBFB));
+        cursor: pointer; }
+
+    /* Orange button */
+    .btn.orange {    background-color: #FF8A00;
+                    background-image: -moz-linear-gradient(center top , #fbb15a, #ff8a00);
+                    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fbb15a), to(#ff8a00));
+                    border-color: #ff8a00; color: #FFFFFF; }
+    .btn.orange:hover {    background-color:  #fbb15a;
+                        background-image: -moz-linear-gradient(center top , #ff8a00, #fbb15a);
+                        background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ff8a00), to(#fbb15a)); }
+
+    /* Green button */
+    .btn.green {    background-color: #FF8A00;
+                    background-image: -moz-linear-gradient(center top , #64CA4A, #259E1B);
+                    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#64CA4A), to(#259E1B));
+                    border-color: #249D1A; color: #FFFFFF; }
+    .btn.green:hover {    background-color:  #fbb15a;
+                        background-image: -moz-linear-gradient(center top , #259E1B, #64CA4A);
+                        background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#259E1B), to(#64CA4A)); }
+
+    /* Red button */
+    .btn.red {    background-color: #FF8A00;
+                    background-image: -moz-linear-gradient(center top , #ff494e, #d10005);
+                    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ff494e), to(#d10005));
+                    border-color: #d10005; color: #FFFFFF; }
+    .btn.red:hover {    background-color:  #fbb15a;
+                        background-image: -moz-linear-gradient(center top , #d10005, #ff494e);
+                        background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#d10005), to(#ff494e)); }
+
+    .btn.disable {
+		background: #EFEFEF !important;
+		color: #DCDCDC !important;
+		border: 1px solid #DCDCDC !important;
+    }
+
+    /* A group of buttons, this will remove the gap seperating thing */
+    .btnGroup { border-color:#F0F0F0 #E2E2E2 #E4E4E4 #F0F0F0; border-style:solid; border-width: 1px;
+                display: inline-block; }
+    .btnGroup .btn { border: 0px; }
+
+    .btnGroup .btn.left { border-width: 1px 0px 1px 1px; border-right: 1px solid #F0F0F0; float: left; }
+    .btnGroup .btn.right { border-width: 1px 1px 1px 0px; border-left: 1px solid #FFFFFF; float: left !important; }
+
+    .btn.drop span { background-image: url('/images/icons/arrows.png'); background-repeat: no-repeat;
+                     background-position: left 1px; display: inline-block; margin-left: 5px; width: 7px; }
+
+    .btn:hover.drop span { background-position: left -16px; }
+
+/* Navigation
+------------------ */
+
+    /* top */
+    #nav { float: left; list-style: none; margin: 0; padding: 0; }
+    #nav li { float: left; margin: 0;}
+    #nav li.selected a { color: #FFFFFF; }
+    #nav a { color: #7b7a7f; padding: 4px 10px; float: left; font-size: 14px;
+             text-shadow: #161519 -1px -1px 0px; margin: 12px 5px 0 5px;}
+    #nav a:hover { color: #ff8a00; }
+

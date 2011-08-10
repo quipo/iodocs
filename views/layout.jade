@@ -8,13 +8,21 @@ html
         title=title
         link(rel='stylesheet', href='/stylesheets/prettify.css')
         link(rel='stylesheet', href='/stylesheets/style.css')
+        link(rel='stylesheet', href='/stylesheets/datasift.css')
 
     body
-        !{body}
-        div(id='io-footer')
-           div(class='f-left') &copy;  
-              a(href='http://mashery.com/io') Mashery, Inc.
-           div(class='f-right') Powered by 
+        div(id='header')
+           div(id='bar')
+               h1(id='logo')
+                   a(href='/')
+                       Datasift
+
+        div(id='section')
+            !{body}
+        div(id='footer')
+           div(class='f-left') &copy; &nbsp;
+              a(href='http://mediasift.com') MediaSift, Inc.
+           div(class='f-right') Powered by &nbsp;
               a(href='https://github.com/mashery/iodocs') I/O Docs
         script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js')
         script(src='/javascripts/json2.js')

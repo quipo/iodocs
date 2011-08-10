@@ -1,0 +1,117 @@
+{
+   "endpoints":[
+      {
+       	 "name":"Core API",
+         "path":"/",
+         "methods":[
+            {
+               "MethodName":"compile",
+               "Synopsis":"Compile a CSDL.",
+               "HTTPMethod":"GET",
+               "URI":"compile",
+               "RequiresOAuth":"N",
+               "parameters":[
+                  {
+                     "Name":"csdl",
+                     "Required":"Y",
+                     "Default":"",
+                     "Type":"string",
+                     "Description":"Filter definition (CSDL)"
+                  },
+                  {
+                     "Name":"username",
+                     "Required":"Y",
+                     "Default":"",
+                     "Type":"string",
+                     "Description":"Username"
+                  }
+               ]
+            },
+            {
+               "MethodName":"validate",
+               "Synopsis":"Validate a CSDL.",
+               "HTTPMethod":"GET",
+               "URI":"validate",
+               "RequiresOAuth":"N",
+               "parameters":[
+                  {
+                     "Name":"csdl",
+                     "Required":"Y",
+                     "Default":"",
+                     "Type":"string",
+                     "Description":"Filter definition (CSDL)"
+                  },
+                  {
+                     "Name":"username",
+       	             "Required":"Y",
+                     "Default":"",
+                     "Type":"string",
+                     "Description":"Username"
+                  }
+               ]
+            },
+            {
+               "MethodName":"cost",
+               "Synopsis":"Retrieve cost information for a stream",
+               "HTTPMethod":"GET",
+               "URI":"cost",
+               "RequiresOAuth":"N",
+               "parameters":[
+                  {
+                     "Name":"hash",
+                     "Required":"Y",
+                     "Default":"",
+                     "Type":"string",
+                     "Description":"Definition ID (hash)"
+                  },
+                  {
+                     "Name":"username",
+                     "Required":"Y",
+                     "Default":"",
+                     "Type":"string",
+                     "Description":"Username"
+                  }
+               ]
+            },
+            {
+               "MethodName":"stream",
+               "Synopsis":"Retrieve up to 200 interactions from a stream (buffered).",
+               "HTTPMethod":"GET",
+               "URI":"stream",
+               "RequiresOAuth":"N",
+               "parameters":[
+                  {
+                     "Name":"hash",
+                     "Required":"Y",
+                     "Default":"",
+                     "Type":"string",
+                     "Description":"Stream definition id (hash)"
+                  },
+                  {
+                     "Name":"username",
+                     "Required":"Y",
+                     "Default":"",
+                     "Type":"string",
+                     "Description":"Username"
+                  },
+                  {
+                     "Name":"interaction_id",
+                     "Required":"N",
+                     "Default":"",
+                     "Type":"string",
+                     "Description":"The last identifier of the interaction you want to retrieve from."
+                  },
+                  {
+                     "Name":"count",
+                     "Required":"N",
+                     "Default":"200",
+                     "Type":"integer",
+                     "Description":"The number of interactions you want to retrieve (range 1-200)"
+                  }
+               ]
+            }
+         ]
+      }
+   ]
+}
+                     
