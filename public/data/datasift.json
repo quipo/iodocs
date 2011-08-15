@@ -2,13 +2,13 @@
    "endpoints":[
       {
        	 "name":"Core API",
-         "path":"",
+         "path":"/",
          "methods":[
             {
                "MethodName":"Compile a CSDL",
                "Synopsis":"Compile a filter definition (CSDL).",
                "HTTPMethod":"GET",
-               "URI":"/compile",
+               "URI":"compile",
                "RequiresOAuth":"N",
                "parameters":[
                   {
@@ -31,7 +31,7 @@
                "MethodName":"Validate a CSDL",
                "Synopsis":"Validate a CSDL. Identical to the compile action, except it will not store the compiled version in the DataSift database.",
                "HTTPMethod":"GET",
-               "URI":"/validate",
+               "URI":"validate",
                "RequiresOAuth":"N",
                "parameters":[
                   {
@@ -54,7 +54,7 @@
                "MethodName":"Get stream cost",
                "Synopsis":"Retrieve cost information for a stream",
                "HTTPMethod":"GET",
-               "URI":"/cost",
+               "URI":"cost",
                "RequiresOAuth":"N",
                "parameters":[
                   {
@@ -77,7 +77,7 @@
                "MethodName":"Get stream interactions",
                "Synopsis":"Retrieve up to 200 interactions from a stream (buffered).",
                "HTTPMethod":"GET",
-               "URI":"/stream",
+               "URI":"stream",
                "RequiresOAuth":"N",
                "parameters":[
                   {
@@ -114,13 +114,13 @@
       },
 	  {
        	 "name":"Recordings API",
-         "path":"",
+         "path":"/",
          "methods":[
             {
                "MethodName":"List Recordings",
                "Synopsis":"Get a list of recordings or detail about one recording.",
                "HTTPMethod":"GET",
-               "URI":"/recording",
+               "URI":"recording",
                "RequiresOAuth":"N",
                "parameters":[
                   {
@@ -150,7 +150,7 @@
                "MethodName":"Schedule a new recording",
                "Synopsis":"Schedule a new recording for a given stream.",
                "HTTPMethod":"GET",
-               "URI":"/recording/schedule",
+               "URI":"recording/schedule",
                "RequiresOAuth":"N",
                "parameters":[
                   {
@@ -187,7 +187,7 @@
                "MethodName":"Update existing Recording",
                "Synopsis":"Update the details for a recording. Any parameters not supplied by the user will not be updated.",
                "HTTPMethod":"GET",
-               "URI":"/recording/update",
+               "URI":"recording/update",
                "RequiresOAuth":"N",
                "parameters":[
                   {
@@ -224,7 +224,7 @@
                "MethodName":"Delete a Recording",
                "Synopsis":"Retrieve up to 200 interactions from a stream (buffered).",
                "HTTPMethod":"GET",
-               "URI":"/recording/delete",
+               "URI":"recording/delete",
                "RequiresOAuth":"N",
                "parameters":[
                   {
@@ -240,13 +240,13 @@
       },
 	  {
        	 "name":"Recording Exports API",
-         "path":"",
+         "path":"/",
          "methods":[
             {
                "MethodName":"Get a list of exports",
                "Synopsis":"Get a list of exports for this user (pagination included), or a single recording export if an ID is supplied.",
                "HTTPMethod":"GET",
-               "URI":"/recording/export",
+               "URI":"recording/export",
                "RequiresOAuth":"N",
                "parameters":[
                   {
@@ -276,7 +276,7 @@
                "MethodName":"Start a new export",
                "Synopsis":"Start the process of exporting a recording.",
                "HTTPMethod":"GET",
-               "URI":"/recording/export/start",
+               "URI":"recording/export/start",
                "RequiresOAuth":"N",
                "parameters":[
                   {
@@ -320,7 +320,7 @@
                "MethodName":"Delete an export",
                "Synopsis":"Delete the export",
                "HTTPMethod":"GET",
-               "URI":"/recording/export/delete",
+               "URI":"recording/export/delete",
                "RequiresOAuth":"N",
                "parameters":[
                   {
@@ -336,13 +336,13 @@
       },
 	  {
        	 "name":"Usage stats API",
-         "path":"",
+         "path":"/",
          "methods":[
             {
                "MethodName":"Get usage",
                "Synopsis":"Get the users usage for a given time period. IF no time period is given then it will select usage from the last 24 hours. If a stream hash is provided a more details breakdown using interaction types is presented.",
                "HTTPMethod":"GET",
-               "URI":"/usage",
+               "URI":"usage",
                "RequiresOAuth":"N",
                "parameters":[
                   {
@@ -372,4 +372,3 @@
       }
    ]
 }
-                     
