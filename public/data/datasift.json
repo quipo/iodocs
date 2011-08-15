@@ -2,13 +2,13 @@
    "endpoints":[
       {
        	 "name":"Core API",
-         "path":"/",
+         "path":"",
          "methods":[
             {
-               "MethodName":"compile",
-               "Synopsis":"Compile a CSDL.",
+               "MethodName":"Compile a CSDL",
+               "Synopsis":"Compile a filter definition (CSDL).",
                "HTTPMethod":"GET",
-               "URI":"compile",
+               "URI":"/compile",
                "RequiresOAuth":"N",
                "parameters":[
                   {
@@ -28,10 +28,10 @@
                ]
             },
             {
-               "MethodName":"validate",
-               "Synopsis":"Validate a CSDL.",
+               "MethodName":"Validate a CSDL",
+               "Synopsis":"Validate a CSDL. Identical to the compile action, except it will not store the compiled version in the DataSift database.",
                "HTTPMethod":"GET",
-               "URI":"validate",
+               "URI":"/validate",
                "RequiresOAuth":"N",
                "parameters":[
                   {
@@ -51,10 +51,10 @@
                ]
             },
             {
-               "MethodName":"cost",
+               "MethodName":"Get stream cost",
                "Synopsis":"Retrieve cost information for a stream",
                "HTTPMethod":"GET",
-               "URI":"cost",
+               "URI":"/cost",
                "RequiresOAuth":"N",
                "parameters":[
                   {
@@ -74,10 +74,10 @@
                ]
             },
             {
-               "MethodName":"stream",
+               "MethodName":"Get stream interactions",
                "Synopsis":"Retrieve up to 200 interactions from a stream (buffered).",
                "HTTPMethod":"GET",
-               "URI":"stream",
+               "URI":"/stream",
                "RequiresOAuth":"N",
                "parameters":[
                   {
@@ -107,6 +107,264 @@
                      "Default":"200",
                      "Type":"integer",
                      "Description":"The number of interactions you want to retrieve (range 1-200)"
+                  }
+               ]
+            }
+         ]
+      },
+	  {
+       	 "name":"Recordings API",
+         "path":"",
+         "methods":[
+            {
+               "MethodName":"List Recordings",
+               "Synopsis":"Get a list of recordings or detail about one recording.",
+               "HTTPMethod":"GET",
+               "URI":"/recording",
+               "RequiresOAuth":"N",
+               "parameters":[
+                  {
+                     "Name":"id",
+                     "Required":"N",
+                     "Default":"",
+                     "Type":"string",
+                     "Description":"Recording ID"
+                  },
+                  {
+                     "Name":"page",
+                     "Required":"N",
+                     "Default":"1",
+                     "Type":"integer",
+                     "Description":"The page number"
+                  },
+                  {
+                     "Name":"count",
+                     "Required":"N",
+                     "Default":"20",
+                     "Type":"integer",
+                     "Description":"The count per page"
+                  }
+               ]
+            },
+            {
+               "MethodName":"Schedule a new recording",
+               "Synopsis":"Schedule a new recording for a given stream.",
+               "HTTPMethod":"GET",
+               "URI":"/recording/schedule",
+               "RequiresOAuth":"N",
+               "parameters":[
+                  {
+                     "Name":"hash",
+                     "Required":"Y",
+                     "Default":"",
+                     "Type":"string",
+                     "Description":"The stream hash"
+                  },
+                  {
+                     "Name":"name",
+       	             "Required":"N",
+                     "Default":"",
+                     "Type":"string",
+                     "Description":"A name for the recording (default: the stream hash)"
+                  },
+                  {
+                     "Name":"start",
+       	             "Required":"N",
+                     "Default":"",
+                     "Type":"integer",
+                     "Description":"The unix timestamp for when to start the recording (default: now)"
+                  },
+                  {
+                     "Name":"end",
+       	             "Required":"N",
+                     "Default":"",
+                     "Type":"integer",
+                     "Description":"The unix timestamp for when to end the recording (default: no ending)"
+                  }
+               ]
+            },
+            {
+               "MethodName":"Update existing Recording",
+               "Synopsis":"Update the details for a recording. Any parameters not supplied by the user will not be updated.",
+               "HTTPMethod":"GET",
+               "URI":"/recording/update",
+               "RequiresOAuth":"N",
+               "parameters":[
+                  {
+                     "Name":"id",
+                     "Required":"Y",
+                     "Default":"",
+                     "Type":"string",
+                     "Description":"The recording id"
+                  },
+                  {
+                     "Name":"name",
+       	             "Required":"N",
+                     "Default":"",
+                     "Type":"string",
+                     "Description":"A name for the recording"
+                  },
+                  {
+                     "Name":"start",
+       	             "Required":"N",
+                     "Default":"",
+                     "Type":"integer",
+                     "Description":"The unix timestamp for when to start the recording (must be now or in the future)"
+                  },
+                  {
+                     "Name":"end",
+       	             "Required":"N",
+                     "Default":"",
+                     "Type":"integer",
+                     "Description":"The unix timestamp for when to end the recording (must be in the future)"
+                  }
+               ]
+            },
+            {
+               "MethodName":"Delete a Recording",
+               "Synopsis":"Retrieve up to 200 interactions from a stream (buffered).",
+               "HTTPMethod":"GET",
+               "URI":"/recording/delete",
+               "RequiresOAuth":"N",
+               "parameters":[
+                  {
+                     "Name":"id",
+                     "Required":"Y",
+                     "Default":"",
+                     "Type":"string",
+                     "Description":"Recording id"
+                  }
+               ]
+            }
+         ]
+      },
+	  {
+       	 "name":"Recording Exports API",
+         "path":"",
+         "methods":[
+            {
+               "MethodName":"Get a list of exports",
+               "Synopsis":"Get a list of exports for this user (pagination included), or a single recording export if an ID is supplied.",
+               "HTTPMethod":"GET",
+               "URI":"/recording/export",
+               "RequiresOAuth":"N",
+               "parameters":[
+                  {
+                     "Name":"id",
+                     "Required":"N",
+                     "Default":"",
+                     "Type":"string",
+                     "Description":"Export ID"
+                  },
+                  {
+                     "Name":"page",
+                     "Required":"N",
+                     "Default":"1",
+                     "Type":"integer",
+                     "Description":"The page number"
+                  },
+                  {
+                     "Name":"count",
+                     "Required":"N",
+                     "Default":"20",
+                     "Type":"integer",
+                     "Description":"The count per page"
+                  }
+               ]
+            },
+            {
+               "MethodName":"Start a new export",
+               "Synopsis":"Start the process of exporting a recording.",
+               "HTTPMethod":"GET",
+               "URI":"/recording/export/start",
+               "RequiresOAuth":"N",
+               "parameters":[
+                  {
+                     "Name":"recording_id",
+                     "Required":"Y",
+                     "Default":"",
+                     "Type":"string",
+                     "Description":"The ID of the recording to be exported"
+                  },
+                  {
+                     "Name":"format",
+       	             "Required":"Y",
+                     "Default":"",
+                     "Type":"string",
+                     "Description":"json, xls or xlsx"
+                  },
+                  {
+                     "Name":"name",
+       	             "Required":"N",
+                     "Default":"",
+                     "Type":"string",
+                     "Description":"A name for the export (default: the export hash)"
+                  },
+                  {
+                     "Name":"start",
+       	             "Required":"N",
+                     "Default":"",
+                     "Type":"integer",
+                     "Description":"The unix timestamp for when to start the recording's export"
+                  },
+                  {
+                     "Name":"end",
+       	             "Required":"N",
+                     "Default":"",
+                     "Type":"integer",
+                     "Description":"The unix timestamp for when to end the recording's export"
+                  }
+               ]
+            },
+            {
+               "MethodName":"Delete an export",
+               "Synopsis":"Delete the export",
+               "HTTPMethod":"GET",
+               "URI":"/recording/export/delete",
+               "RequiresOAuth":"N",
+               "parameters":[
+                  {
+                     "Name":"id",
+                     "Required":"Y",
+                     "Default":"",
+                     "Type":"string",
+                     "Description":"The export id"
+                  }
+               ]
+            }
+         ]
+      },
+	  {
+       	 "name":"Usage stats API",
+         "path":"",
+         "methods":[
+            {
+               "MethodName":"Get usage",
+               "Synopsis":"Get the users usage for a given time period. IF no time period is given then it will select usage from the last 24 hours. If a stream hash is provided a more details breakdown using interaction types is presented.",
+               "HTTPMethod":"GET",
+               "URI":"/usage",
+               "RequiresOAuth":"N",
+               "parameters":[
+                  {
+                     "Name":"hash",
+                     "Required":"N",
+                     "Default":"",
+                     "Type":"string",
+                     "Description":"Filter to just this stream hash and get a higher level of detail that includes interaction types"
+                  },
+                  {
+                     "Name":"start",
+       	             "Required":"N",
+                     "Default":"24 hours ago",
+                     "Type":"integer",
+                     "Description":"The start unix timestamp"
+                  },
+                  {
+                     "Name":"end",
+       	             "Required":"N",
+                     "Default":"",
+                     "Type":"integer",
+                     "Description":"The end unix timestamp"
                   }
                ]
             }
