@@ -17,13 +17,6 @@
                      "Default":"",
                      "Type":"string",
                      "Description":"Filter definition (CSDL)"
-                  },
-                  {
-                     "Name":"username",
-                     "Required":"Y",
-                     "Default":"",
-                     "Type":"string",
-                     "Description":"Username"
                   }
                ]
             },
@@ -40,13 +33,6 @@
                      "Default":"",
                      "Type":"string",
                      "Description":"Filter definition (CSDL)"
-                  },
-                  {
-                     "Name":"username",
-       	             "Required":"Y",
-                     "Default":"",
-                     "Type":"string",
-                     "Description":"Username"
                   }
                ]
             },
@@ -63,13 +49,6 @@
                      "Default":"",
                      "Type":"string",
                      "Description":"Definition ID (hash)"
-                  },
-                  {
-                     "Name":"username",
-                     "Required":"Y",
-                     "Default":"",
-                     "Type":"string",
-                     "Description":"Username"
                   }
                ]
             },
@@ -86,14 +65,7 @@
                      "Default":"",
                      "Type":"string",
                      "Description":"Stream definition id (hash)"
-                  },
-                  {
-                     "Name":"username",
-                     "Required":"Y",
-                     "Default":"",
-                     "Type":"string",
-                     "Description":"Username"
-                  },
+                  }
                   {
                      "Name":"interaction_id",
                      "Required":"N",
@@ -355,9 +327,9 @@
                   {
                      "Name":"start",
        	             "Required":"N",
-                     "Default":"24 hours ago",
+                     "Default":"",
                      "Type":"integer",
-                     "Description":"The start unix timestamp"
+                     "Description":"The start unix timestamp (default: 24 hours ago)"
                   },
                   {
                      "Name":"end",
