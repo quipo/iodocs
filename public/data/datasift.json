@@ -65,7 +65,7 @@
                      "Default":"",
                      "Type":"string",
                      "Description":"Stream definition id (hash)"
-                  }
+                  },
                   {
                      "Name":"interaction_id",
                      "Required":"N",
