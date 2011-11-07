@@ -37,10 +37,10 @@
                ]
             },
             {
-               "MethodName":"Get stream cost",
-               "Synopsis":"Retrieve cost information for a stream",
+               "MethodName":"Get stream DPU cost",
+               "Synopsis":"Retrieve DPU cost information for a stream",
                "HTTPMethod":"GET",
-               "URI":"cost",
+               "URI":"dpu",
                "RequiresOAuth":"N",
                "parameters":[
                   {
@@ -312,31 +312,17 @@
          "methods":[
             {
                "MethodName":"Get usage",
-               "Synopsis":"Get the users usage for a given time period. IF no time period is given then it will select usage from the last 24 hours. If a stream hash is provided a more details breakdown using interaction types is presented.",
+               "Synopsis":"Get usage information (volume of licensed messages, connections duration) for the last hour/day.",
                "HTTPMethod":"GET",
                "URI":"usage",
                "RequiresOAuth":"N",
                "parameters":[
                   {
-                     "Name":"hash",
+                     "Name":"period",
                      "Required":"N",
-                     "Default":"",
+                     "Default":"hour",
                      "Type":"string",
-                     "Description":"Filter to just this stream hash and get a higher level of detail that includes interaction types"
-                  },
-                  {
-                     "Name":"start",
-       	             "Required":"N",
-                     "Default":"",
-                     "Type":"integer",
-                     "Description":"The start unix timestamp (default: 24 hours ago)"
-                  },
-                  {
-                     "Name":"end",
-       	             "Required":"N",
-                     "Default":"",
-                     "Type":"integer",
-                     "Description":"The end unix timestamp"
+                     "Description":"hour or day"
                   }
                ]
             }
