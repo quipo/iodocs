@@ -1,0 +1,72 @@
+{
+	"authenticationmanager":[
+	{
+		"name":"Authentication Manager API",
+		"path":"/authentication/",
+		"methods":[
+		{
+			"MethodName":"Validate user by API key",
+			"Synopsis":"",
+			"HTTPMethod":"GET",
+			"URI":"/:api_key",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"api_key",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"API key"
+			}
+			]
+		},
+		{
+			"MethodName":"Get API key for user",
+			"Synopsis":"",
+			"HTTPMethod":"GET",
+			"URI":"/user/:user_id",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"user_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User ID"
+			}
+			]
+		},
+		{
+			"MethodName":"Get auth by ip address",
+			"Synopsis":"",
+			"HTTPMethod":"GET",
+			"URI":"/service/:ip_address",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"ip_address",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"IP Address"
+			}
+			]
+		},
+		{
+			"MethodName":"Update API key for user",
+			"Synopsis":"",
+			"HTTPMethod":"PUT",
+			"URI":"/user/:user_id",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"user_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User ID"
+			}
+			]
+		}
+	]
+}

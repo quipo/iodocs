@@ -1,0 +1,31 @@
+{
+	"salience":[
+	{
+		"name":"TweetMeme API (Links augmentation)",
+		"path":"/salience/",
+		"methods":[
+		{
+			"MethodName":"Guess the language a blob of text is written in",
+			"Synopsis":"Language detection using UTF-8 code blocks and trigrams",
+			"HTTPMethod":"POST",
+			"URI":":language/process",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"language",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"One of [en, fr, es, pt], with an optional 'short' prefix (e.g. 'shortfr') for Tweets and similar short text."
+			},
+			{
+				"Name":"",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"Json body with the 'data' field"
+			}
+			]
+		}
+	]
+}

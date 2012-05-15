@@ -1,0 +1,24 @@
+{
+	"gender":[
+	{
+		"name":"Gender Detection API",
+		"path":"/gender/",
+		"methods":[
+		{
+			"MethodName":"Guess the gender of a person",
+			"Synopsis":"Guess the gender of a person, given the name (and optionally the country). The response can be one of (male, female, mostly_male, mostly_female, unisex, name_not_found)",
+			"HTTPMethod":"POST",
+			"URI":"",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"Json body with the 'name' field"
+			}
+			]
+		}
+	]
+}

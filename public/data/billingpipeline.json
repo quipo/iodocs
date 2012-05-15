@@ -1,0 +1,365 @@
+{
+	"billingpipeline":[
+	{
+		"name":"Billing Pipeline API",
+		"path":"/billingpipeline/",
+		"methods":[
+		{
+			"MethodName":"Get balance information for the given user",
+			"Synopsis":"",
+			"HTTPMethod":"GET",
+			"URI":"balance/:user_id",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"user_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User ID"
+			}
+			]
+		},
+		{
+			"MethodName":"Check if the user is chargeable",
+			"Synopsis":"Does the user have a valid plan and available credits?",
+			"HTTPMethod":"GET",
+			"URI":"chargeable/:user_id",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"user_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User ID"
+			}
+			]
+		},
+		{
+			"MethodName":"Get the credit card payments for a user in a time range",
+			"Synopsis":"Get a list of payments from our logs so we can reconcile them with Zuora's",
+			"HTTPMethod":"GET",
+			"URI":"payments/:start_time/:end_time/:user_id",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"start_time",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix TS"
+			},
+			{
+				"Name":"end_time",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix TS"
+			},
+			{
+				"Name":"user_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User ID"
+			}
+			]
+		},
+		{
+			"MethodName":"Top up the balance",
+			"Synopsis":"Get a list of payments from our logs so we can reconcile them with Zuora's",
+			"HTTPMethod":"POST",
+			"URI":"/callback/zuora/payg/incrementbalance/",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"credits",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Amount of dollars to add to the balance"
+			},
+			{
+				"Name":"updated_at",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix TS"
+			},
+			{
+				"Name":"user_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User ID"
+			},
+			{
+				"Name":"plan_name",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"Plan Name"
+			}
+			]
+		},
+		{
+			"MethodName":"Add a new monthly subscription",
+			"Synopsis":"Get a list of payments from our logs so we can reconcile them with Zuora's",
+			"HTTPMethod":"POST",
+			"URI":"/callback/zuora/subscription/subscribe/",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"dpu",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"DPUs in the monthly allowance"
+			},
+			{
+				"Name":"value",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Value in dollars for the subscription"
+			},
+			{
+				"Name":"start",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix TS"
+			},
+			{
+				"Name":"end",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix TS"
+			},
+			{
+				"Name":"user_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User ID"
+			},
+			{
+				"Name":"plan_name",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"Plan Name"
+			}
+			]
+		},
+		{
+			"MethodName":"Create a Free plan",
+			"Synopsis":"Also add $10 in free credits",
+			"HTTPMethod":"POST",
+			"URI":"/createfreeuser/",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"user_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User ID"
+			}
+			]
+		},
+		{
+			"MethodName":"Topup the balance",
+			"Synopsis":"Add credits to a PAYG account",
+			"HTTPMethod":"POST",
+			"URI":"/edr/:type/:start/:end/:user_id",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"type",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"One of 'licence' or 'dpu'"
+			},
+			{
+				"Name":"start",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix TS"
+			},
+			{
+				"Name":"end",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix TS"
+			},
+			{
+				"Name":"user_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User ID"
+			}
+			]
+		},
+		{
+			"MethodName":"Get licence volume by day and user",
+			"Synopsis":"Returns a map of [user_id: [{ts: vol}, {ts:vol}, ...]",
+			"HTTPMethod":"GET",
+			"URI":"/edr/licence/rollup/:start/:end/:type",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"type",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"Licence name ('twitter', 'salience', ...)"
+			},
+			{
+				"Name":"start",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix TS"
+			},
+			{
+				"Name":"end",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix TS"
+			}
+			]
+		},
+		{
+			"MethodName":"Get revenue within a date range",
+			"Synopsis":"Get revenue in terms of money, DPU, licence",
+			"HTTPMethod":"GET",
+			"URI":"/revenue/:start/:end/",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"start",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix TS"
+			},
+			{
+				"Name":"end",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix TS"
+			}
+			]
+		},
+		{
+			"MethodName":"Set a hard spending threshold for a given user",
+			"Synopsis":"Once the threshold is hit, the user is prevented from using the platform",
+			"HTTPMethod":"POST",
+			"URI":"/userthreshold",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"user_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User ID"
+			},
+			{
+				"Name":"threshold",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Maximum spend limit"
+			}
+			]
+		},
+		{
+			"MethodName":"Cancel a monthly subscription",
+			"Synopsis":"Retire a monthly subscription",
+			"HTTPMethod":"POST",
+			"URI":"/cancelsubscription",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"user_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User ID"
+			},
+			{
+				"Name":"timestamp",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix TS"
+			}
+			]
+		},
+		{
+			"MethodName":"Get a list of all unpaid invoices (optionally, for a single user only)",
+			"Synopsis":"Retire a monthly subscription",
+			"HTTPMethod":"GET",
+			"URI":"/invoice/unpaid/:user_id",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"user_id",
+				"Required":"N",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User ID"
+			}
+			]
+		},
+		{
+			"MethodName":"Update an invoice",
+			"Synopsis":"Currently, only to mark it as paid",
+			"HTTPMethod":"PUT",
+			"URI":"/invoice/:invoice_id",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"Json body with the 'paid' boolean parameter"
+			}
+			]
+		},
+		{
+			"MethodName":"Get the entitlements for a certain user, from a certain date",
+			"Synopsis":"",
+			"HTTPMethod":"GET",
+			"URI":"/entitlements/:user_id/:from",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"user_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User ID"
+			},
+			{
+				"Name":"from",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix TS"
+			}
+			]
+		}
+	]
+}

@@ -1,0 +1,24 @@
+{
+	"languagedetection":[
+	{
+		"name":"Language Detection API",
+		"path":"/detect/",
+		"methods":[
+		{
+			"MethodName":"Guess the language a blob of text is written in",
+			"Synopsis":"Language detection using UTF-8 code blocks and trigrams",
+			"HTTPMethod":"POST",
+			"URI":"",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"Json body with the 'text' field"
+			}
+			]
+		}
+	]
+}

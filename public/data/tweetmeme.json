@@ -1,0 +1,24 @@
+{
+	"tweetmeme":[
+	{
+		"name":"TweetMeme API (Links augmentation)",
+		"path":"api.tweetmeme.com/",
+		"methods":[
+		{
+			"MethodName":"Resolve a link",
+			"Synopsis":"Get the target URL, the title of the target page, when it was created, the number of retweets",
+			"HTTPMethod":"GET",
+			"URI":":url_info.json",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"url",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"urlencoded URL to resolve."
+			}
+			]
+		}
+	]
+}

@@ -1,0 +1,329 @@
+{
+	"monitoringaggregator":[
+	{
+		"name":"Monitoring Aggregator API",
+		"path":"/monitoringaggregator/",
+		"methods":[
+		{
+			"MethodName":"Get usage volume for a user within a time range",
+			"Synopsis":"",
+			"HTTPMethod":"GET",
+			"URI":"/processed/:user_id/:start/:end/:type",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"user_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User ID"
+			},
+			{
+				"Name":"start",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix TS"
+			},
+			{
+				"Name":"end",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix TS"
+			},
+			{
+				"Name":"type",
+				"Required":"N",
+				"Default":"",
+				"Type":"string",
+				"Description":"Data source type (twitter, facebook, digg, ...)"
+			}
+			]
+		},
+		{
+			"MethodName":"Get usage volume for a stream within a time range",
+			"Synopsis":"",
+			"HTTPMethod":"GET",
+			"URI":"/processed/:definition_id/:start/:end/:type",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"definition_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"Definition ID (hash)"
+			},
+			{
+				"Name":"start",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix TS"
+			},
+			{
+				"Name":"end",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix TS"
+			},
+			{
+				"Name":"type",
+				"Required":"N",
+				"Default":"",
+				"Type":"string",
+				"Description":"Data source type (twitter, facebook, digg, ...)"
+			}
+			]
+		},
+		{
+			"MethodName":"Get usage volume for all users within a time range",
+			"Synopsis":"",
+			"HTTPMethod":"GET",
+			"URI":"/processed/:start/:end/:type",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"start",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix TS"
+			},
+			{
+				"Name":"end",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix TS"
+			},
+			{
+				"Name":"type",
+				"Required":"N",
+				"Default":"",
+				"Type":"string",
+				"Description":"Data source type (twitter, facebook, digg, ...)"
+			}
+			]
+		},
+		{
+			"MethodName":"Retrieve the users that are/were active in a time interval",
+			"Synopsis":"",
+			"HTTPMethod":"GET",
+			"URI":"/activeusers/:start/:end/",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"start",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix TS"
+			},
+			{
+				"Name":"end",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix TS"
+			}
+			]
+		},
+		{
+			"MethodName":"Export detailed usage volume by date range for a specific user",
+			"Synopsis":"",
+			"HTTPMethod":"GET",
+			"URI":"/detail/:user_id/:start/:end/:definition_id",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"user_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User ID"
+			},
+			{
+				"Name":"start",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix TS"
+			},
+			{
+				"Name":"end",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix TS"
+			},
+			{
+				"Name":"definition_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"Definition ID (hash)"
+			}
+			]
+		},
+		{
+			"MethodName":"Export detailed usage volume by date range for all users",
+			"Synopsis":"",
+			"HTTPMethod":"GET",
+			"URI":"/batchdetail/:start/:end/",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"start",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix TS"
+			},
+			{
+				"Name":"end",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix TS"
+			}
+			]
+		},
+		{
+			"MethodName":"Export rollup usage volume by date range for a specific user",
+			"Synopsis":"",
+			"HTTPMethod":"GET",
+			"URI":"/rollup/:user_id/:start/:end/",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"user_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User ID"
+			},
+			{
+				"Name":"start",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix TS"
+			},
+			{
+				"Name":"end",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix TS"
+			}
+			]
+		},
+		{
+			"MethodName":"Export rollup usage volume by date range for a specific input stream",
+			"Synopsis":"",
+			"HTTPMethod":"GET",
+			"URI":"/export/:type/:start/:end/",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"type",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"Data source type (twitter, facebook, digg, ...)"
+			},
+			{
+				"Name":"start",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix TS"
+			},
+			{
+				"Name":"end",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix TS"
+			}
+			]
+		},
+		{
+			"MethodName":"Get the top X streams by generated traffic within a time",
+			"Synopsis":"",
+			"HTTPMethod":"GET",
+			"URI":"/topstreams/:number/:start/:end/:type",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"number",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"how many streams to select (e.g. top 10, top 25)"
+			},
+			{
+				"Name":"start",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix TS"
+			},
+			{
+				"Name":"end",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix TS"
+			},
+			{
+				"Name":"type",
+				"Required":"N",
+				"Default":"",
+				"Type":"string",
+				"Description":"Data source type (twitter, facebook, digg, ...)"
+			}
+			]
+		},
+		{
+			"MethodName":"Get the top X users by generated traffic within a time",
+			"Synopsis":"",
+			"HTTPMethod":"GET",
+			"URI":"/topusers/:number/:start/:end/:type",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"number",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"how many users to select (e.g. top 10, top 25)"
+			},
+			{
+				"Name":"start",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix TS"
+			},
+			{
+				"Name":"end",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix TS"
+			},
+			{
+				"Name":"type",
+				"Required":"N",
+				"Default":"",
+				"Type":"string",
+				"Description":"Data source type (twitter, facebook, digg, ...)"
+			}
+			]
+		}
+	]
+}

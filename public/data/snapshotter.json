@@ -1,0 +1,45 @@
+{
+	"snapshotter":[
+	{
+		"name":"Snapshotter API",
+		"path":"/snapshotter/",
+		"methods":[
+		{
+			"MethodName":"Get a chunk of interactions from the buffer",
+			"Synopsis":"",
+			"HTTPMethod":"GET",
+			"URI":"",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"definition_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"Definition ID (stream hash)"
+			},
+			{
+				"Name":"user_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User ID"
+			},
+			{
+				"Name":"sequence_id",
+				"Required":"N",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Starting sequence ID (from the beginning of the buffer if not provided)"
+			},
+			{
+				"Name":"count",
+				"Required":"N",
+				"Default":"200",
+				"Type":"integer",
+				"Description":"Maximum number of results to return in one request"
+			}
+			]
+		}
+	]
+}

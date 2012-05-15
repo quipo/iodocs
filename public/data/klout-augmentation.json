@@ -1,0 +1,24 @@
+{
+	"klout-augmentation":[
+	{
+		"name":"Klout API (augmentation for Twitter user profiles)",
+		"path":"/klout/",
+		"methods":[
+		{
+			"MethodName":"Get Klout information for a twitter user",
+			"Synopsis":"Get the Klout score, true_reach, amplification, network and topics",
+			"HTTPMethod":"GET",
+			"URI":"",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Twitter User ID"
+			}
+			]
+		}
+	]
+}

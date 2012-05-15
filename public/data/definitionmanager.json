@@ -1,0 +1,150 @@
+{
+	"definitionmanager":[
+	{
+		"name":"Definition Manager API",
+		"path":"/definitionmanager/",
+		"methods":[
+		{
+			"MethodName":"Get details about an existing definition",
+			"Synopsis":"Get the definition, when it was created, the dpus, plus other metadata",
+			"HTTPMethod":"GET",
+			"URI":":definition_id",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"definition_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"Definition id (32-char hash)"
+			},
+			{
+				"Name":"include_dependencies",
+				"Required":"N",
+				"Default":"false",
+				"Type":"boolean",
+				"Description":"Whether to also include a list of all the definitions this definition is reliant on."
+			}
+			]
+		},
+		{
+			"MethodName":"Check if the definition exists",
+			"Synopsis":"Quick check to see whether a definition exists",
+			"HTTPMethod":"HEAD",
+			"URI":":definition_id",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"definition_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"Definition id (32-char hash)"
+			}
+			]
+		},
+		{
+			"MethodName":"Get Cost breakdown",
+			"Synopsis":"Get the cost breakdown for a definition",
+			"HTTPMethod":"GET",
+			"URI":":definition_id/cost",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"definition_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"Definition id (32-char hash)"
+			}
+			]
+		},
+		{
+			"MethodName":"Compile and store a new definition",
+			"Synopsis":"Validates, compiles and stores a new definition",
+			"HTTPMethod":"POST",
+			"URI":"",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"Definition as json object. The body must contain the 'definition' property, it is the only required data, everything else will be generated."
+			}
+			]
+		},
+		{
+			"MethodName":"Disable/enable a definition",
+			"Synopsis":"Sets the disabled flag and the disabled_reason field",
+			"HTTPMethod":"PUT",
+			"URI":":definition",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"Json document with the 'disabled' and 'disabled_reason' properties."
+			}
+			]
+		},
+		{
+			"MethodName":"Delete a definition",
+			"Synopsis":"Delete an existing definition.",
+			"HTTPMethod":"DELETE",
+			"URI":":definition_id",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"definition_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"Definition id"
+			}
+			]
+		},
+		{
+			"MethodName":"List all hashes",
+			"Synopsis":"Returns a list of rule hashes, sorted by ascending creation date (i.e. oldest first)",
+			"HTTPMethod":"GET",
+			"URI":"/listhashes/:page/:cpp",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"page",
+				"Required":"N",
+				"Default":"0",
+				"Type":"integer",
+				"Description":"Page id (to paginate through results)"
+			},
+			{
+				"Name":"cpp",
+				"Required":"N",
+				"Default":"0",
+				"Type":"integer",
+				"Description":"How many results per page"
+			}
+			]
+		},
+		{
+			"MethodName":"Recompile a definition",
+			"Synopsis":"Returns a list of rule hashes, sorted by ascending creation date (i.e. oldest first)",
+			"HTTPMethod":"GET",
+			"URI":":definition_id/recompile",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"definition_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"Definition id"
+			}
+			]
+		}
+	]
+}

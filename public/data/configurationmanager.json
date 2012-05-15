@@ -1,0 +1,79 @@
+{
+	"configurationmanager":[
+	{
+		"name":"Configuration Manager API",
+		"path":"/configuration/",
+		"methods":[
+		{
+			"MethodName":"Get information about current configuration (all, or limited to a single service)",
+			"Synopsis":"",
+			"HTTPMethod":"GET",
+			"URI":":namespace",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"namespace",
+				"Required":"N",
+				"Default":"twitter",
+				"Type":"string",
+				"Description":"Configuration namespace (e.g. project name)"
+			},
+			{
+				"Name":"flatten",
+				"Required":"N",
+				"Default":"",
+				"Type":"boolean",
+				"Description":"Whether to flatten the response"
+			}
+			]
+		},
+		{
+			"MethodName":"Create/Update configuration",
+			"Synopsis":"",
+			"HTTPMethod":"PUT",
+			"URI":":namespace",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"namespace",
+				"Required":"N",
+				"Default":"",
+				"Type":"string",
+				"Description":"Configuration namespace (e.g. project name)"
+			}
+			]
+		},
+		{
+			"MethodName":"Publish a configuration namespace to Redis",
+			"Synopsis":"",
+			"HTTPMethod":"POST",
+			"URI":":namespace",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"namespace",
+				"Required":"N",
+				"Default":"",
+				"Type":"string",
+				"Description":"Configuration namespace (e.g. project name)"
+			}
+			]
+		},
+		{
+			"MethodName":"Delete a configuration",
+			"Synopsis":"",
+			"HTTPMethod":"DELETE",
+			"URI":":namespace",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"namespace",
+				"Required":"N",
+				"Default":"",
+				"Type":"string",
+				"Description":"Configuration namespace (e.g. project name)"
+			}
+			]
+		}
+	]
+}

@@ -1,64 +1,110 @@
 {
-    "klout": {
-        "name": "Klout API",
-        "protocol": "http",
-        "baseURL": "api.klout.com",
-        "publicPath": "/1",
-        "auth": "key",
-        "keyParam": "key"
-    },
-    "fanfeedr": {
-        "name": "FanFeedr Sports Basic API",
-        "protocol": "http",
-        "baseURL": "ffapi.fanfeedr.com",
-        "publicPath": "",
-        "auth": "key",
-        "keyParam": "api_key"
-    },
-    "usatoday": {
-        "name": "USA TODAY Census API",
-         "protocol": "http",
-         "baseURL": "api.usatoday.com",
-         "publicPath": "/open",
-         "auth": "key",
-         "keyParam": "api_key"
-    },
-    "linkedin": {
-       "name": "LinkedIn",
-        "protocol": "http",
-        "baseURL": "api.linkedin.com",
-        "publicPath": "",
-        "privatePath": "/v1",
-        "auth": "oauth",
-        "oauth": {
-             "type": "three-legged",
-             "requestURL": "https://api.linkedin.com/uas/oauth/requestToken",
-             "signinURL":  "https://api.linkedin.com/uas/oauth/authorize?oauth_token=",
-             "accessURL":  "https://api.linkedin.com/uas/oauth/accessToken",
-             "version": "1.0",
-             "crypt": "HMAC-SHA1"
-        },
-        "keyParam":""
-    },
-    "simplegeo": {
-        "name": "SimpleGeo",
-        "protocol": "http",
-        "baseURL": "api.simplegeo.com",
-        "publicPath": "",
-        "auth": "oauth",
-        "oauth": {
-             "type": "two-legged",
-             "version": "1.0",
-             "crypt": "HMAC-SHA1"
-        }
-    },
-    "datasift": {
-        "name": "DataSift Core API",
+    "authenticationmanager": {
+        "name": "Authentication Manager API",
         "protocol":"http",
-        "baseURL": "api.datasift.net",
-        "publicPath": "/",
-        "auth":"key",
-        "keyParam":"api_key",
-        "usernameParam":"username"
+        "baseURL": "localhost:88",
+        "publicPath": "/"
+    },
+    "billingpipeline": {
+        "name": "Billing Pipeline API",
+        "protocol":"http",
+        "baseURL": "localhost:88",
+        "publicPath": "/"
+    },
+    "configurationmanager": {
+        "name": "Configuration Manager API",
+        "protocol":"http",
+        "baseURL": "localhost:88",
+        "publicPath": "/"
+    },
+    "connectionmanager": {
+        "name": "Connection Manager API",
+        "protocol":"http",
+        "baseURL": "localhost:88",
+        "publicPath": "/"
+    },
+    "definitionmanager": {
+        "name": "Definition Manager API",
+        "protocol":"http",
+        "baseURL": "localhost:88",
+        "publicPath": "/"
+    },
+    "gender": {
+        "name": "Gender Detection API",
+        "protocol":"http",
+        "baseURL": "localhost:88",
+        "publicPath": "/"
+    },
+    "klout-augmentation": {
+        "name": "Klout Augmentation API",
+        "protocol":"http",
+        "baseURL": "localhost:88",
+        "publicPath": "/"
+    },
+    "languagedetection": {
+        "name": "Language Detection API",
+        "protocol":"http",
+        "baseURL": "localhost:88",
+        "publicPath": "/"
+    },
+    "licensemanager": {
+        "name": "License Manager API",
+        "protocol":"http",
+        "baseURL": "localhost:88",
+        "publicPath": "/"
+    },
+    "maskmanager": {
+        "name": "Mask Manager API",
+        "protocol":"http",
+        "baseURL": "localhost:88",
+        "publicPath": "/"
+    },
+    "monitoringaggregator": {
+        "name": "Monitoring Aggregator API",
+        "protocol":"http",
+        "baseURL": "localhost:88",
+        "publicPath": "/"
+    },
+    "recordingscheduler": {
+        "name": "Recording Scheduler API",
+        "protocol":"http",
+        "baseURL": "localhost:88",
+        "publicPath": "/"
+    },
+    "salience": {
+        "name": "Salience Augmentation API",
+        "protocol":"http",
+        "baseURL": "localhost:88",
+        "publicPath": "/"
+    },
+    "snapshotter": {
+        "name": "Snapshotter API",
+        "protocol":"http",
+        "baseURL": "localhost:88",
+        "publicPath": "/"
+    },
+    "titan-exports": {
+        "name": "Titan Exports API",
+        "protocol":"http",
+        "baseURL": "localhost:88",
+        "publicPath": "/"
+    },
+    "titan-historics": {
+        "name": "Titan Historics API",
+        "protocol":"http",
+        "baseURL": "localhost:88",
+        "publicPath": "/"
+    },
+    "trends": {
+        "name": "Trends Augmentation API",
+        "protocol":"http",
+        "baseURL": "localhost:88",
+        "publicPath": "/"
+    },
+    "tweetmeme": {
+        "name": "TweetMeme API (Links Augmentation)",
+        "protocol":"http",
+        "baseURL": "localhost:88",
+        "publicPath": "/"
     }
 }

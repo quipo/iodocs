@@ -1,0 +1,309 @@
+{
+	"exports":[
+	{
+		"name":"Exports API",
+		"path":"/exports/",
+		"methods":[
+		{
+			"MethodName":"Create a new export from a recording",
+			"Synopsis":"Create an export from a (portion of a) recording",
+			"HTTPMethod":"POST",
+			"URI":"/users/:user/recordings/:recording/exports",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"user",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User id"
+			},
+			{
+				"Name":"recording",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"The recording ID"
+			},
+			{
+				"Name":"start",
+				"Required":"N",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix TS of the start of the export (defaults to the recording's start time)"
+			},
+			{
+				"Name":"end",
+				"Required":"N",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix TS of the end of the export (defaults to the recording's end time)"
+			},
+			{
+				"Name":"format",
+				"Required":"Y",
+				"Default":"json",
+				"Type":"string",
+				"Description":"csv or json"
+			},
+			{
+				"Name":"destination",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"A URL to the directory to export the data to, excluding filename(s)"
+			},
+			{
+				"Name":"isCustomDestination",
+				"Required":"Y",
+				"Default":"false",
+				"Type":"boolean",
+				"Description":"If true, then it's a user-defined destination, otherwise it's an internal DataSift destinations"
+			},
+			{
+				"Name":"title",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"A descriptive title for the export"
+			},
+			{
+				"Name":"filter",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"A comma-separated list of columns/fields"
+			},
+			{
+				"Name":"expiry",
+				"Required":"N",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix TS of when to expire the export"
+			},
+			{
+				"Name":"compression",
+				"Required":"N",
+				"Default":"",
+				"Type":"string",
+				"Description":"One of gzip, bzip2, LZO, SNAPPY"
+			}
+			]
+		},
+		{
+			"MethodName":"Create or retry an export",
+			"Synopsis":"Retry an existing export. Only applicable to exports that have failed",
+			"HTTPMethod":"PUT",
+			"URI":"/users/:user/recordings/:recording/exports/:export",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"user",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User id"
+			},
+			{
+				"Name":"recording",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"The recording ID"
+			},
+			{
+				"Name":"export",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"The export ID"
+			},
+			{
+				"Name":"start",
+				"Required":"N",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix TS of the start of the export (defaults to the recording's start time)"
+			},
+			{
+				"Name":"end",
+				"Required":"N",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix TS of the end of the export (defaults to the recording's end time)"
+			},
+			{
+				"Name":"format",
+				"Required":"Y",
+				"Default":"json",
+				"Type":"string",
+				"Description":"csv or json"
+			},
+			{
+				"Name":"destination",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"A URL to the directory to export the data to, excluding filename(s)"
+			},
+			{
+				"Name":"isCustomDestination",
+				"Required":"Y",
+				"Default":"false",
+				"Type":"boolean",
+				"Description":"If true, then it's a user-defined destination, otherwise it's an internal DataSift destinations"
+			},
+			{
+				"Name":"title",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"A descriptive title for the export"
+			},
+			{
+				"Name":"filter",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"A comma-separated list of columns/fields"
+			},
+			{
+				"Name":"expiry",
+				"Required":"N",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix TS of when to expire the export"
+			},
+			{
+				"Name":"compression",
+				"Required":"N",
+				"Default":"",
+				"Type":"string",
+				"Description":"One of gzip, bzip2, LZO, SNAPPY"
+			}
+			]
+		},
+		{
+			"MethodName":"Get exports for a recording",
+			"Synopsis":"Get a list of the exports for a user's recording. NB: you MUST specify the desired response format in an Accept header (defaults to application/json)",
+			"HTTPMethod":"GET",
+			"URI":"/users/:user/recordings/:recording/exports",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"user",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User id"
+			},
+			{
+				"Name":"recording",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"The recording ID"
+			},
+			{
+				"Name":"include_deleted",
+				"Required":"N",
+				"Default":"false",
+				"Type":"boolean",
+				"Description":"Whether to include exports that have been deleted"
+			}
+			]
+		},
+		{
+			"MethodName":"Get export status",
+			"Synopsis":"Gets the current status of an export",
+			"HTTPMethod":"GET",
+			"URI":"/users/:user/recordings/:recording/exports/:export",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"user",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User id"
+			},
+			{
+				"Name":"recording",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"The recording ID"
+			},
+			{
+				"Name":"export",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"The export ID"
+			}
+			]
+		},
+		{
+			"MethodName":"Delete an export",
+			"Synopsis":"Deletes the specified export. The export will be deleted from the datastore, however its meta-data will remain, hidden by default.",
+			"HTTPMethod":"DELETE",
+			"URI":"/users/:user/recordings/:recording/exports/:export",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"user",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User id"
+			},
+			{
+				"Name":"recording",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"The recording ID"
+			},
+			{
+				"Name":"export",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"The export ID"
+			}
+			]
+		},
+		{
+			"MethodName":"List exports for user",
+			"Synopsis":"Lists all exports for a user irrespective of recording.",
+			"HTTPMethod":"GET",
+			"URI":"/users/:user/exports",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"user",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User id"
+			}
+			]
+		},
+		{
+			"MethodName":"List columns for an export",
+			"Synopsis":"List all the columns seen for a particular recording",
+			"HTTPMethod":"GET",
+			"URI":"/recordings/:recording/columns",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"recording",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"Recording id"
+			}
+			]
+		}
+	]
+}

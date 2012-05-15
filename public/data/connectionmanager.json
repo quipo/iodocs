@@ -1,0 +1,181 @@
+{
+	"connectionmanager":[
+	{
+		"name":"Connection Manager API",
+		"path":"/connectionmanager/",
+		"methods":[
+		{
+			"MethodName":"Get connection intervals for a user",
+			"Synopsis":"Get the intervals where the user was connected to a stream",
+			"HTTPMethod":"POST",
+			"URI":"/connectiontimes",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"Json body with the following fields: 'user_id' integer, (optional) 'definition_id' string, (optional) 'start' unix timestamp, (optional) 'end' unix timestamp"
+			}
+			]
+		},
+		{
+			"MethodName":"List the active users",
+			"Synopsis":"Returns a list of currently active user IDs, with a list of connected definition IDs for each one of them",
+			"HTTPMethod":"GET",
+			"URI":"activeusers",
+			"RequiresOAuth":"N",
+			"parameters":[]
+		},
+		{
+			"MethodName":"List the active users specified in the post data, within a certain time frame",
+			"Synopsis":"List the active users specified in the post data, within a certain time frame",
+			"HTTPMethod":"POST",
+			"URI":"activeusers",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"Json body with the following fields: 'start' unix timestamp, 'end' unix timestamp (optional, defaults to now), 'definition_id' hash of specific definition (defaults to all hashes)"
+			}
+			]
+		},
+		{
+			"MethodName":"DEPRECATED - Get stats about concurrent connections within a time period (month, week, day, hour)",
+			"Synopsis":"The granularity for 'month' and 'week' is 1 day, for 'day' is 1 hour, for 'hour' is 5 minutes.",
+			"HTTPMethod":"GET",
+			"URI":"connections/:user_id/:start/:period/:definition_id",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"user_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User ID"
+			},
+			{
+				"Name":"start",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix timestamp"
+			},
+			{
+				"Name":"period",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":""
+			},
+			{
+				"Name":"definition_id",
+				"Required":"N",
+				"Default":"",
+				"Type":"string",
+				"Description":"Hash of specific definition (defaults to all hashes)"
+			}
+			]
+		},
+		{
+			"MethodName":"Get detailed reports about all the connections within a time range",
+			"Synopsis":"",
+			"HTTPMethod":"POST",
+			"URI":"detail",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"Json document with the 'user_id', 'start', 'end' and 'disabled_id' properties."
+			}
+			]
+		},
+		{
+			"MethodName":"Get stats about concurrent connections within a time period (month, week, day, hour).",
+			"Synopsis":"The granularity for 'month' and 'week' is 1 day, for 'day' is 1 hour, for 'hour' is 5 minutes.",
+			"HTTPMethod":"POST",
+			"URI":":times",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"Json document with the 'user_id', 'start', 'end' and 'disabled_id' properties."
+			}
+			]
+		},
+		{
+			"MethodName":"Get stats about concurrent connections within a time range",
+			"Synopsis":"The granularity depends on the range period, less than 2 hours it is 5 minutes, less than 2 days it is one hour and otherwise it is one day. Actual start time will be calculated from the given start time rounded down to the nearest granularity offset. Provides a rollup of how many seconds for each connection type was used within that time period.",
+			"HTTPMethod":"POST",
+			"URI":":timesrollup",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"Json document with the 'user_id', 'start', 'end' properties."
+			}
+			]
+		},
+		{
+			"MethodName":"Get stats about concurrent connections within a time range",
+			"Synopsis":"provides a rollup of how many seconds for each connection type was used within that time period.",
+			"HTTPMethod":"POST",
+			"URI":":historictimesrollup",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"Json document with the 'user_id', 'start', 'end' properties."
+			}
+			]
+		},
+		{
+			"MethodName":"Get stats about concurrent connections within a time range",
+			"Synopsis":"provides a rollup of how many seconds for each connection type was used within that time period.",
+			"HTTPMethod":"POST",
+			"URI":":batchtimes",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"Json document with the 'start', 'end' properties."
+			}
+			]
+		},
+		{
+			"MethodName":"Get the total number of seconds across all users within the time range",
+			"Synopsis":"Rollup of connection times",
+			"HTTPMethod":"POST",
+			"URI":":get_total_time_by_source",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"Json document with the 'start', 'end' properties."
+			}
+			]
+		}
+	]
+}

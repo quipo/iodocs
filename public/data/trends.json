@@ -1,0 +1,31 @@
+{
+	"trends":[
+	{
+		"name":"Trends Analysis API",
+		"path":"/trends/",
+		"methods":[
+		{
+			"MethodName":"Retrieve the topics and locations that are trending and relevant for the current text",
+			"Synopsis":"Using the Twitter API, get a list of trending topics/locations. Do a reverse lookup to see whether such topics are mentioned in the message.",
+			"HTTPMethod":"POST",
+			"URI":"",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"service",
+				"Required":"Y",
+				"Default":"twitter",
+				"Type":"string",
+				"Description":"Service to retrieve trending topics from. Only 'twitter' is supported ATM."
+			},
+			{
+				"Name":"content",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"Text to analyse"
+			}
+			]
+		}
+	]
+}

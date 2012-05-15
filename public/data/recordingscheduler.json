@@ -1,0 +1,167 @@
+{
+	"endpoints":[
+	{
+		"name":"Recorder API",
+		"path":"/recordings/",
+		"methods":[
+		{
+			"MethodName":"Create a new Recording",
+			"Synopsis":"Schedule a new recording for a live stream",
+			"HTTPMethod":"POST",
+			"URI":"",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"stream",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"Stream id (32 chars MD5 hash)"
+			},
+			{
+				"Name":"user",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User id"
+			},
+			{
+				"Name":"start",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"When to start the recording (Unix Timestamp) - must be in the future"
+			},
+			{
+				"Name":"end",
+				"Required":"N",
+				"Default":"",
+				"Type":"integer",
+				"Description":"When to end the recording (Unix Timestamp) - must be in the future, after the start time"
+			},
+			{
+				"Name":"ip_address",
+				"Required":"N",
+				"Default":"internal",
+				"Type":"string",
+				"Description":"IP address of the requester"
+			},
+			{
+				"Name":"playback",
+				"Required":"N",
+				"Default":"false",
+				"Type":"boolean",
+				"Description":"Marks this recording as being a playback (i.e. recording of a historic query)"
+			}
+			]
+		},
+		{
+			"MethodName":"List Recordings for given user",
+			"Synopsis":"Retrieves the Recordings for the specified user.",
+			"HTTPMethod":"GET",
+			"URI":"",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"user",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User ID"
+			},
+			{
+				"Name":"max",
+				"Required":"N",
+				"Default":"20",
+				"Type":"integer",
+				"Description":"The maximum number of Recordings to return"
+			},
+			{
+				"Name":"offset",
+				"Required":"N",
+				"Default":"0",
+				"Type":"integer",
+				"Description":"Numeric offset to start returning records from"
+			}
+			]
+		},
+		{
+			"MethodName":"List Recordings for given user",
+			"Synopsis":"Retrieves the Recordings for the specified user.",
+			"HTTPMethod":"GET",
+			"URI":":id",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"user",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User ID"
+			},
+			{
+				"Name":"id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"Recording ID"
+			},
+			{
+				"Name":"start",
+				"Required":"N",
+				"Default":"",
+				"Type":"integer",
+				"Description":"UNIX timestamp of when we should start returning statistics for (if empty, defaults to the start of the Recording)"
+			},
+			{
+				"Name":"period",
+				"Required":"N",
+				"Default":"",
+				"Type":"string",
+				"Description":"day|week|month (if empty, defaults to the end of the Recording)"
+			}
+			]
+		},
+		{
+			"MethodName":"Delete a specific recording",
+			"Synopsis":"Deletes a specific recording.",
+			"HTTPMethod":"DELETE",
+			"URI":":id",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"The recording ID (20 chars hash)"
+			}
+			]
+		},
+		{
+			"MethodName":"Curtail a specific recording",
+			"Synopsis":"Curtails a specific recording when an exception occurs (like user banned or out of credits).",
+			"HTTPMethod":"PUT",
+			"URI":":id/curtail",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"The recording ID (20 chars hash)"
+			},
+			{
+				"Name":"reason_template",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"Notoriety template with the curtail reason (recordingscheduler-recording-stopped-no-credits | recordingscheduler-recording-stopped-rate-limit-reached)"
+			}
+			]
+		}
+		]
+	}
+	]
+}

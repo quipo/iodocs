@@ -1,0 +1,370 @@
+{
+	"historics":[
+	{
+		"name":"Historics API",
+		"path":"/historics/",
+		"methods":[
+		{
+			"MethodName":"Retrieve information for historical queries for a user",
+			"Synopsis":"Retrieve information for historical queries for a given user",
+			"HTTPMethod":"GET",
+			"URI":"",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"user",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User id"
+			},
+			{
+				"Name":"requestor",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"api or frontend"
+			}
+			]
+		},
+		{
+			"MethodName":"Retrieve information for a historical query",
+			"Synopsis":"Retrieve information for a historical query, like the playback id, the volume of data in that time range, the status of the query, etc.",
+			"HTTPMethod":"GET",
+			"URI":":id",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"playback id (20-char hash)"
+			},
+			{
+				"Name":"user",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User id"
+			},
+			{
+				"Name":"requestor",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"api or frontend"
+			}
+			]
+		},
+		{
+			"MethodName":"Delete a historical query",
+			"Synopsis":"Deletes the specified historics (soft delete). It will also stop if the playback if currently running",
+			"HTTPMethod":"DELETE",
+			"URI":"validate",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"playback id (20-char hash)"
+			},
+			{
+				"Name":"user",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User id"
+			}
+			]
+		},
+		{
+			"MethodName":"Prepare a new historical query",
+			"Synopsis":"Prepare a new historical query",
+			"HTTPMethod":"GET",
+			"URI":"dpu",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"stream",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"Stream hash (CSDL hash)"
+			},
+			{
+				"Name":"user",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User id"
+			},
+			{
+				"Name":"start",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix TS, start time of the time range to be scanned (must be in the past)"
+			},
+			{
+				"Name":"feed",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"comma-separated list of feed types to be scanned (e.g. 'twitter,facebook,myspace')"
+			},
+			{
+				"Name":"requestor",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"api or frontend"
+			},
+			{
+				"Name":"name",
+				"Required":"N",
+				"Default":"playback id",
+				"Type":"string",
+				"Description":"Optional user-defined label for this query"
+			},
+			{
+				"Name":"ip_address",
+				"Required":"N",
+				"Default":"internal",
+				"Type":"string",
+				"Description":"IP address of the requestor"
+			},
+			{
+				"Name":"sample",
+				"Required":"N",
+				"Default":"100",
+				"Type":"float",
+				"Description":"Sample rate required (e.g. 1.56, 12.5 or 100)"
+			}
+			]
+		},
+		{
+			"MethodName":"Start an existing historical query",
+			"Synopsis":"Execute a pending historical query, submitting it to the job tracker",
+			"HTTPMethod":"PUT",
+			"URI":"start/:id",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"Playback ID (20-char hash)"
+			},
+			{
+				"Name":"user",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User ID"
+			}
+			]
+		},
+		{
+			"MethodName":"Stop a running historical query",
+			"Synopsis":"Stop a running historical query",
+			"HTTPMethod":"PUT",
+			"URI":"stop/:id",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"Playback ID (20-char hash)"
+			},
+			{
+				"Name":"user",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User ID"
+			},
+			{
+				"Name":"reason",
+				"Required":"N",
+				"Default":"",
+				"Type":"string",
+				"Description":"(optional) reason for stopping the query"
+			}
+			]
+		},
+		{
+			"MethodName":"Update the name of a historical query",
+			"Synopsis":"Update the name of a historical query",
+			"HTTPMethod":"PUT",
+			"URI":":id",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"Playback ID (20-char hash)"
+			},
+			{
+				"Name":"user",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User ID"
+			},
+			{
+				"Name":"name",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"Custom label for the historical query"
+			}
+			]
+		},
+		{
+			"MethodName":"Retrieves statistics from the archive for a given time period",
+			"Synopsis":"For each data source, shows the volume of interactions hour by hour or day by day",
+			"HTTPMethod":"GET",
+			"URI":"statistics",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"timeframe",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"hour or day"
+			},
+			{
+				"Name":"feed",
+				"Required":"N",
+				"Default":"",
+				"Type":"string",
+				"Description":"Comma-separated list of feeds you are interested in (eg. 'twitter,facebook,myspace'). Defaults to all the feeds"
+			},
+			{
+				"Name":"start",
+				"Required":"N",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix TS [NOT IMPLEMENTED YET]"
+			},
+			{
+				"Name":"end",
+				"Required":"N",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Unix TS [NOT IMPLEMENTED YET]"
+			}
+			]
+		},
+		{
+			"MethodName":"Start a recording for a historical query",
+			"Synopsis":"Start a recording for a historical query",
+			"HTTPMethod":"PUT",
+			"URI":"historics/record/:playback_id",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"playback_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"Historical query ID"
+			},
+			{
+				"Name":"user",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User ID"
+			},
+			{
+				"Name":"recording_name",
+				"Required":"N",
+				"Default":"",
+				"Type":"string",
+				"Description":"Optional label for the recording, defaults to playback_id"
+			}
+			]
+		},
+		{
+			"MethodName":"Change the priority for a historical query",
+			"Synopsis":"Change the priority for a historical query",
+			"HTTPMethod":"PUT",
+			"URI":"historics/priority/:playback_id",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"playback_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"Historical query ID"
+			},
+			{
+				"Name":"user",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User ID"
+			},
+			{
+				"Name":"priority",
+				"Required":"Y",
+				"Default":"3",
+				"Type":"integer",
+				"Description":"A number from 1 to 5, 1 is Very low and 5 is very high."
+			}
+			]
+		},
+		{
+			"MethodName":"List the chunks for a historical query",
+			"Synopsis":"List the chunks for a historical query",
+			"HTTPMethod":"GET",
+			"URI":"historics/chunks/:playback_id",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"playback_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"Historical query ID"
+			},
+			{
+				"Name":"user",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User ID"
+			}
+			]
+		},
+		{
+			"MethodName":"List all the chunks being processed",
+			"Synopsis":"List all the active chunks",
+			"HTTPMethod":"GET",
+			"URI":"historics/chunks/active",
+			"RequiresOAuth":"N",
+			"parameters":[]
+		},
+		{
+			"MethodName":"List all the chunks in the queue",
+			"Synopsis":"List all the chunks in the queue",
+			"HTTPMethod":"GET",
+			"URI":"historics/chunks/queue",
+			"RequiresOAuth":"N",
+			"parameters":[]
+		}
+		]
+	}
+	]
+}

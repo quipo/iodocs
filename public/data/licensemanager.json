@@ -1,0 +1,282 @@
+{
+	"licensemanager":[
+	{
+		"name":"License Manager API",
+		"path":"/license/",
+		"methods":[
+		{
+			"MethodName":"Get information about all licenses",
+			"Synopsis":"",
+			"HTTPMethod":"GET",
+			"URI":"/",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"include_revision",
+				"Required":"N",
+				"Default":"",
+				"Type":"boolean",
+				"Description":"Whether to include the latest revision in the response"
+			}
+			]
+		},
+		{
+			"MethodName":"Get info about a specific license",
+			"Synopsis":"",
+			"HTTPMethod":"GET",
+			"URI":"/:license_id",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"license_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"License ID"
+			},
+			{
+				"Name":"include_revision",
+				"Required":"N",
+				"Default":"",
+				"Type":"boolean",
+				"Description":"Whether to include the latest revision in the response"
+			}
+			]
+		},
+		{
+			"MethodName":"Update API key for user",
+			"Synopsis":"",
+			"HTTPMethod":"POST",
+			"URI":"/",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"name",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"Name for the license"
+			},
+			{
+				"Name":"require_approval",
+				"Required":"Y",
+				"Default":"",
+				"Type":"boolean",
+				"Description":"Whether the user must submit a description of their usecase when they sign the revision"
+			},
+			{
+				"Name":"content",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"string over 100 chars of license content (will be set as the first revision)"
+			}
+			]
+		},
+		{
+			"MethodName":"Delete a license",
+			"Synopsis":"",
+			"HTTPMethod":"DELETE",
+			"URI":"/:license_id",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"license_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"License ID"
+			}
+			]
+		},
+		{
+			"MethodName":"List all revisions for a license",
+			"Synopsis":"The most recent first",
+			"HTTPMethod":"GET",
+			"URI":"/:license_id/revision",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"license_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"License ID"
+			}
+			]
+		},
+		{
+			"MethodName":"Information about a specific license revision",
+			"Synopsis":"",
+			"HTTPMethod":"GET",
+			"URI":"/:license_id/revision/:revision",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"license_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"License ID"
+			},
+			{
+				"Name":"revision",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Revision Number"
+			}
+			]
+		},
+		{
+			"MethodName":"Add a new revision to a license",
+			"Synopsis":"",
+			"HTTPMethod":"POST",
+			"URI":"/:license_id/revision",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"license_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"License ID"
+			},
+			{
+				"Name":"content",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"string over 100 chars of license content"
+			}
+			]
+		},
+		{
+			"MethodName":"Delete a specific license revision",
+			"Synopsis":"",
+			"HTTPMethod":"DELETE",
+			"URI":"/:license_id/revision/:revision",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"license_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"License ID"
+			},
+			{
+				"Name":"revision",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Revision Number"
+			}
+			]
+		},
+		{
+			"MethodName":"List all licenses and whether the user has signed them",
+			"Synopsis":"",
+			"HTTPMethod":"GET",
+			"URI":"/user/:user_id",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"user_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User ID"
+			},
+			{
+				"Name":"include_revision",
+				"Required":"N",
+				"Default":"",
+				"Type":"boolean",
+				"Description":"Whether to include the latest revision in the response"
+			},
+			{
+				"Name":"include_signed",
+				"Required":"N",
+				"Default":"",
+				"Type":"boolean",
+				"Description":"Whether to include only signed licenses"
+			},
+			{
+				"Name":"include_unsigned",
+				"Required":"N",
+				"Default":"",
+				"Type":"boolean",
+				"Description":"Whether to include only unsigned licenses"
+			}
+			]
+		},
+		{
+			"MethodName":"Information about whether a user has signed the latest revision of a license",
+			"Synopsis":"",
+			"HTTPMethod":"GET",
+			"URI":"/:license_id/user/:user_id",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"license_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"License ID"
+			},
+			{
+				"Name":"user_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User ID"
+			},
+			{
+				"Name":"include_revision",
+				"Required":"N",
+				"Default":"",
+				"Type":"boolean",
+				"Description":"Whether to include the latest revision in the response"
+			}
+			]
+		},
+		{
+			"MethodName":"A user signing a license",
+			"Synopsis":"",
+			"HTTPMethod":"POST",
+			"URI":"/:license_id/user/:user_id",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"license_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"License ID"
+			},
+			{
+				"Name":"user_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User ID"
+			},
+			{
+				"Name":"signature",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"the signature of the user to show they have signed the license (e.g. their name)"
+			},
+			{
+				"Name":"description",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"string of what the user plans to do with the data (for twitter license it will be sent to twitter, for some licenses it is mandatory)"
+			}
+			]
+		},
+	]
+}

@@ -1,0 +1,583 @@
+{
+	"maskmanager":[
+	{
+		"name":"Mask Manager API",
+		"path":"/mask/",
+		"methods":[
+		{
+			"MethodName":"Get a list of all masks",
+			"Synopsis":"",
+			"HTTPMethod":"GET",
+			"URI":"/",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"page",
+				"Required":"N",
+				"Default":"",
+				"Type":"integer",
+				"Description":"A page to select from"
+			},
+			{
+				"Name":"cpp",
+				"Required":"N",
+				"Default":"",
+				"Type":"integer",
+				"Description":"items to return per page"
+			}
+			]
+		},
+		{
+			"MethodName":"Get a single mask",
+			"Synopsis":"",
+			"HTTPMethod":"GET",
+			"URI":":hash",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"hash",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"Mask hash"
+			}
+			]
+		},
+		{
+			"MethodName":"Get a list of all bundles",
+			"Synopsis":"",
+			"HTTPMethod":"GET",
+			"URI":"/bundle",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"page",
+				"Required":"N",
+				"Default":"",
+				"Type":"integer",
+				"Description":"A page to select from"
+			},
+			{
+				"Name":"cpp",
+				"Required":"N",
+				"Default":"",
+				"Type":"integer",
+				"Description":"items to return per page"
+			},
+			{
+				"Name":"filters",
+				"Required":"N",
+				"Default":"",
+				"Type":"boolean",
+				"Description":"Whether to include a list of all filters for each bundle"
+			},
+			{
+				"Name":"tags",
+				"Required":"N",
+				"Default":"",
+				"Type":"boolean",
+				"Description":"Whether to include a list of tags"
+			},
+			{
+				"Name":"licenses",
+				"Required":"N",
+				"Default":"",
+				"Type":"boolean",
+				"Description":"Whether to include a list of license IDs"
+			},
+			{
+				"Name":"related",
+				"Required":"N",
+				"Default":"",
+				"Type":"boolean",
+				"Description":"Whether to include a list of all related bundles"
+			},
+			{
+				"Name":"incompatible",
+				"Required":"N",
+				"Default":"",
+				"Type":"boolean",
+				"Description":"Whether to include a list of incompatible bundles"
+			},
+			{
+				"Name":"user_id",
+				"Required":"N",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Add a user context and extra attribute stating bundles active state (true/false)"
+			}
+			]
+		},
+		{
+			"MethodName":"Get a single bundle",
+			"Synopsis":"",
+			"HTTPMethod":"GET",
+			"URI":"/bundles/:bundle_id",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"bundle_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Bundle id"
+			},
+			{
+				"Name":"filters",
+				"Required":"N",
+				"Default":"",
+				"Type":"boolean",
+				"Description":"Whether to include a list of all filters for each bundle"
+			},
+			{
+				"Name":"tags",
+				"Required":"N",
+				"Default":"",
+				"Type":"boolean",
+				"Description":"Whether to include a list of tags"
+			},
+			{
+				"Name":"licenses",
+				"Required":"N",
+				"Default":"",
+				"Type":"boolean",
+				"Description":"Whether to include a list of license IDs"
+			},
+			{
+				"Name":"related",
+				"Required":"N",
+				"Default":"",
+				"Type":"boolean",
+				"Description":"Whether to include a list of all related bundles"
+			},
+			{
+				"Name":"incompatible",
+				"Required":"N",
+				"Default":"",
+				"Type":"boolean",
+				"Description":"Whether to include a list of incompatible bundles"
+			},
+			{
+				"Name":"user_id",
+				"Required":"N",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Add a user context and extra attribute stating bundles active state (true/false)"
+			}
+			]
+		},
+		{
+			"MethodName":"Create a single bundle",
+			"Synopsis":"",
+			"HTTPMethod":"POST",
+			"URI":"/bundle",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"name",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"The name of the bundle. Must be greater than 5 characters."
+			},
+			{
+				"Name":"description",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"The description of the bundle. Must be greater than 20 characters."
+			},
+			{
+				"Name":"filter_ids",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"A comma separated list of filter IDs to associate with the bundle"
+			}
+			]
+		},
+		{
+			"MethodName":"Update a single bundle",
+			"Synopsis":"",
+			"HTTPMethod":"PUT",
+			"URI":"/bundle/:bundle_id",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"bundle_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"The ID of the bundle"
+			},
+			{
+				"Name":"description",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"The description of the bundle. Must be greater than 20 characters."
+			},
+			{
+				"Name":"add_filter_ids",
+				"Required":"N",
+				"Default":"",
+				"Type":"string",
+				"Description":"A comma separated list of filter IDs to associate with the bundle"
+			},
+			{
+				"Name":"remove_filter_ids",
+				"Required":"N",
+				"Default":"",
+				"Type":"string",
+				"Description":"A comma separated list of filter IDs to dissociate with the bundle"
+			}
+			]
+		},
+		{
+			"MethodName":"Get a list of all filters",
+			"Synopsis":"",
+			"HTTPMethod":"GET",
+			"URI":"/filter",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"page",
+				"Required":"N",
+				"Default":"",
+				"Type":"integer",
+				"Description":"A page to select from"
+			},
+			{
+				"Name":"cpp",
+				"Required":"N",
+				"Default":"",
+				"Type":"integer",
+				"Description":"items to return per page"
+			},
+			{
+				"Name":"bundles",
+				"Required":"N",
+				"Default":"",
+				"Type":"boolean",
+				"Description":"Whether to include a list of all bundles each filter is part of"
+			}
+			]
+		},
+		{
+			"MethodName":"Get a single filter",
+			"Synopsis":"",
+			"HTTPMethod":"GET",
+			"URI":"/filter/:filter_id",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"bundles",
+				"Required":"N",
+				"Default":"",
+				"Type":"boolean",
+				"Description":"Whether to include a list of all bundles each filter is part of"
+			}
+			]
+		},
+		{
+			"MethodName":"Create a single filter",
+			"Synopsis":"",
+			"HTTPMethod":"POST",
+			"URI":"/filter",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"name",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"The name of the filter. Must be greater than 5 characters."
+			},
+			{
+				"Name":"description",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"The description of the filter. Must be greater than 20 characters."
+			},
+			{
+				"Name":"unit_cost",
+				"Required":"Y",
+				"Default":"",
+				"Type":"float",
+				"Description":"The decimal cost per unit (interaction or augmentation)"
+			},
+			{
+				"Name":"content",
+				"Required":"Y",
+				"Default":"",
+				"Type":"float",
+				"Description":"The JSON content for the filter (combined into the ACL data structure)"
+			},
+			{
+				"Name":"source",
+				"Required":"N",
+				"Default":"",
+				"Type":"float",
+				"Description":"The interaction source (keep empty for augmentations)"
+			},
+			{
+				"Name":"license_id",
+				"Required":"N",
+				"Default":"",
+				"Type":"float",
+				"Description":"The id of a license related to this filter"
+			},
+			{
+				"Name":"sample",
+				"Required":"N",
+				"Default":"",
+				"Type":"float",
+				"Description":"Sample data rate percentage from 1 to 100"
+			},
+			{
+				"Name":"bundle_ids",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"You must specify at least one bundle to associate this filter with"
+			}
+			]
+		},
+		{
+			"MethodName":"Update a single filter",
+			"Synopsis":"",
+			"HTTPMethod":"PUT",
+			"URI":"/filter/:filter_id",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"filter_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"The ID of the filter."
+			},
+			{
+				"Name":"name",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"The name of the filter. Must be greater than 5 characters."
+			},
+			{
+				"Name":"description",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"The description of the filter. Must be greater than 20 characters."
+			},
+			{
+				"Name":"unit_cost",
+				"Required":"Y",
+				"Default":"",
+				"Type":"float",
+				"Description":"The decimal cost per unit (interaction or augmentation)"
+			},
+			{
+				"Name":"content",
+				"Required":"Y",
+				"Default":"",
+				"Type":"float",
+				"Description":"The JSON content for the filter (combined into the ACL data structure)"
+			},
+			{
+				"Name":"source",
+				"Required":"N",
+				"Default":"",
+				"Type":"float",
+				"Description":"The interaction source (keep empty for augmentations)"
+			},
+			{
+				"Name":"license_id",
+				"Required":"N",
+				"Default":"",
+				"Type":"float",
+				"Description":"The id of a license related to this filter"
+			},
+			{
+				"Name":"sample",
+				"Required":"N",
+				"Default":"",
+				"Type":"float",
+				"Description":"Sample data rate percentage from 1 to 100"
+			},
+			{
+				"Name":"add_bundle_ids",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"CSV list of bundle IDs to associate this filter with"
+			},
+			{
+				"Name":"remove_bundle_ids",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"CSV list of bundle IDs to dissociate this filter with"
+			}
+			]
+		},
+		{
+			"MethodName":"Get a single user's mask and hash",
+			"Synopsis":"",
+			"HTTPMethod":"GET",
+			"URI":"/user/:user_id",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"user_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User ID"
+			}
+			]
+		},
+		{
+			"MethodName":"Get a single user's hash only",
+			"Synopsis":"",
+			"HTTPMethod":"GET",
+			"URI":"/user/:user_id/hash",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"user_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User ID"
+			}
+			]
+		},
+		{
+			"MethodName":"Get a list of bundles a user has",
+			"Synopsis":"",
+			"HTTPMethod":"GET",
+			"URI":"/user/:user_id/bundle",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"user_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User ID"
+			}
+			]
+		},
+		{
+			"MethodName":"Get a list of filters a user has",
+			"Synopsis":"",
+			"HTTPMethod":"GET",
+			"URI":"/user/:user_id/filter",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"user_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User ID"
+			}
+			]
+		},
+		{
+			"MethodName":"Add a bundle to a user. A new mask hash is returned",
+			"Synopsis":"",
+			"HTTPMethod":"POST",
+			"URI":"/user/:user_id/bundle",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"user_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User ID"
+			}
+			{
+				"Name":"bundle_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Bundle ID"
+			}
+			]
+		},
+		{
+			"MethodName":"Remove a bundle from a user. A new mask hash is returned",
+			"Synopsis":"",
+			"HTTPMethod":"DELETE",
+			"URI":"/user/:user_id/bundle/:bundle_id",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"user_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User ID"
+			}
+			{
+				"Name":"bundle_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Bundle ID"
+			}
+			]
+		},
+		{
+			"MethodName":"Activate a filter for a user. A new mask hash is returned",
+			"Synopsis":"",
+			"HTTPMethod":"POST",
+			"URI":"/user/:user_id/filter",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"user_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User ID"
+			}
+			{
+				"Name":"filter_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Filter ID"
+			}
+			]
+		},
+		{
+			"MethodName":"Deactivate a filter for a user. A new mask hash is returned",
+			"Synopsis":"",
+			"HTTPMethod":"DELETE",
+			"URI":"/user/:user_id/filter/:filter_id",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"user_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User ID"
+			}
+			{
+				"Name":"filter_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Filter ID"
+			}
+			]
+		}
+	]
+}
