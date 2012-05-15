@@ -277,6 +277,138 @@
 				"Description":"string of what the user plans to do with the data (for twitter license it will be sent to twitter, for some licenses it is mandatory)"
 			}
 			]
+		},
+		{
+			"MethodName":"Update a license for a user.",
+			"Synopsis":"At the moment all you can update is their approval status.",
+			"HTTPMethod":"PUT",
+			"URI":"/:license_id/user/:user_id",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"license_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"License ID"
+			},
+			{
+				"Name":"user_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User ID"
+			},
+			{
+				"Name":"approved",
+				"Required":"Y",
+				"Default":"",
+				"Type":"boolean",
+				"Description":"Whether the user should be marked as approved or not"
+			}
+			]
+		},
+		{
+			"MethodName":"Unsign a license for a user.",
+			"Synopsis":"",
+			"HTTPMethod":"DELETE",
+			"URI":"/:license_id/user/:user_id",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"license_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"License ID"
+			},
+			{
+				"Name":"user_id",
+				"Required":"Y",
+				"Default":"",
+				"Type":"integer",
+				"Description":"User ID"
+			}
+			]
+		},
+		{
+			"MethodName":"List approved or unapproved users and the licenses they have yet to be approved/denied for",
+			"Synopsis":"",
+			"HTTPMethod":"GET",
+			"URI":"/:approvedstatus",
+			"RequiresOAuth":"N",
+			"parameters":[
+			{
+				"Name":"approvedstatus",
+				"Required":"Y",
+				"Default":"",
+				"Type":"string",
+				"Description":"One of [approved, unapproved]"
+			},
+			{
+				"Name":"license_id",
+				"Required":"N",
+				"Default":"",
+				"Type":"integer",
+				"Description":"A license ID to filter by"
+			},
+			{
+				"Name":"order",
+				"Required":"N",
+				"Default":"",
+				"Type":"string",
+				"Description":"The ordering, one of [user_id, created_at]"
+			},
+			{
+				"Name":"direction",
+				"Required":"N",
+				"Default":"",
+				"Type":"string",
+				"Description":"The direction of ordering, one of [ASC, DESC]"
+			},
+			{
+				"Name":"cpp",
+				"Required":"N",
+				"Default":"",
+				"Type":"integer",
+				"Description":"The count per page"
+			},
+			{
+				"Name":"page",
+				"Required":"N",
+				"Default":"",
+				"Type":"integer",
+				"Description":"The page number"
+			},
+			{
+				"Name":"start",
+				"Required":"N",
+				"Default":"",
+				"Type":"integer",
+				"Description":"Start Unix TS"
+			},
+			{
+				"Name":"end",
+				"Required":"N",
+				"Default":"",
+				"Type":"integer",
+				"Description":"End Unix TS"
+			}
+			{
+				"Name":"order",
+				"Required":"N",
+				"Default":"",
+				"Type":"string",
+				"Description":"The ordering, one of [user_id, created_at]"
+			},
+			{
+				"Name":"order",
+				"Required":"N",
+				"Default":"",
+				"Type":"string",
+				"Description":"The ordering, one of [user_id, created_at]"
+			},
+			]
 		}
 		]
 	}
