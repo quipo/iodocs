@@ -277,6 +277,8 @@
 				"Description":"string of what the user plans to do with the data (for twitter license it will be sent to twitter, for some licenses it is mandatory)"
 			}
 			]
-		},
+		}
+		]
+	}
 	]
 }
